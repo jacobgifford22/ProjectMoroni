@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Edit Note";
+}
+
+@model ScriptureNote
+
+<form method="post">
+    <div class="container px-5">
+        <h1 class="text-center">Edit Note</h1>
+        <hr />
+
+        <div class="row">
+            <div class="col-2">
+                <p class="font-weight-bold"><label asp-for="CategoryId">Category:</label></p>
+                <p class="font-weight-bold"><label asp-for="Reference">Reference:</label></p>
+                <p class="font-weight-bold"><label asp-for="Link">Link:</label></p>
+                <p class="font-weight-bold"><label asp-for="Author">Author:</label></p>
+                <p class="font-weight-bold"><label asp-for="Quote">Quote:</label></p>
+            </div>
+            <div class="col">
+                <p>
+                    <select asp-for="CategoryId">
+                        <option value="">Select...</option>
+                        @foreach (Category c in ViewBag.Categories)
+                        {
+                            <option value="@c.CategoryId">@c.CategoryName</option>
+                        }
+                    </select>
+                </p>
+                <p><input style="width: 100%" asp-for="Reference" /></p>
+                <p><input style="width: 100%" asp-for="Link" /></p>
+                <p><input style="width: 100%" asp-for="Author" /></p>
+                <p><textarea style="width: 100%" asp-for="Quote"></textarea></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-2">
+                <p class="font-weight-bold"><label asp-for="Notes">Notes:</label></p>
+                <p class="text-white font-weight-bold">Reference:</p>
+            </div>
+            <div class="col">
+                <p><textarea style="width: 100%" asp-for="Notes"></textarea></p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-auto">
+                <div asp-validation-summary="All" class="text-danger"></div>
+            </div>
+        </div>
+        <hr />
+
+        <div class="row">
+            <div class="col-md-auto">
+                <a class="btn btn-secondary" asp-controller="Home" asp-action="Notebook">Cancel</a>
+            </div>
+            <div class="col-md-auto">
+                <button type="submit" class="btn btn-outline-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</form>

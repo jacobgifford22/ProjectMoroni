@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Notebook";
+}
+
+@model List<ScriptureNote>
+
+<h1>@ViewData["Title"]</h1>
+<hr />
+
+<table class="table table-bordered table-striped">
+    <thead class="font-weight-bold">
+        <tr>
+            <td>Category</td>
+            <td>Reference</td>
+            <td>Author</td>
+            <td>Quote</td>
+            <td>Notes</td>
+            <td>
+                <a class="btn btn-primary font-weight-semibold" asp-area="" asp-controller="Home" asp-action="Create">+ New</a>
+            </td>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.Category.CategoryName</td>
+                <td>@x.Reference</td>
+                <td>@x.Author</td>
+                <td>@x.Quote</td>
+                <td>@x.Notes</td>
+
+                <td><a class="btn btn-outline-secondary" asp-controller="Home" asp-action="Details" asp-route-scripturenoteid="@x.ScriptureNoteId">Details</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Delete Reference";
+}
+
+@model ScriptureNote
+
+<div class="container px-5">
+    <h1 class="text-center">Confirm Deletion</h1>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-auto">
+            <h3>Are you sure you want to delete your notes for @Model.Reference?</h3>
+        </div>
+    </div>
+    <hr />
+
+    <form method="post" asp-controller="Home" asp-action="Delete">
+        <div class="row">
+            <div class="col-md-auto">
+                <a asp-controller="Home" asp-action="Notebook" class="btn btn-secondary">Cancel</a>
+            </div>
+
+            <div class="col-md-auto">
+                <button type="submit" class="btn btn-outline-danger">Delete</button>
+
+                <input type="hidden" asp-for="ScriptureNoteId" />
+            </div>
+        </div>
+    </form>
+</div>

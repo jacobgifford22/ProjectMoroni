@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Note Details";
+}
+
+@model ScriptureNote
+
+<div class="container px-5">
+    <h1 class="text-center">Note Details</h1>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-auto">
+            <p class="font-weight-bold">Category:</p>
+            <p class="font-weight-bold">Reference:</p>
+            <p class="font-weight-bold">Author:</p>
+            <p class="font-weight-bold">Quote:</p>
+        </div>
+        <div class="col">
+            <p>@Model.Category.CategoryName</p>
+            <p><a href="@Model.Link" target="_blank">@Model.Reference</a></p>
+
+            @if (Model.Author != null)
+            {
+                <p>@Model.Author</p>
+            }
+            else
+            {
+                <p>N/A</p>
+            }
+
+            <p>@Model.Quote</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-auto">
+            <p class="font-weight-bold">Notes:</p>
+            <p class="font-weight-bold text-white">Reference:</p>
+        </div>
+        <div class="col">
+
+            <p>@Model.Notes</p>
+        </div>
+    </div>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-auto">
+            <a class="btn btn-secondary" asp-controller="Home" asp-action="Notebook">Back</a>
+        </div>
+        <div class="col-md-auto">
+            <a class="btn btn-outline-warning" asp-controller="Home" asp-action="Edit" asp-route-scripturenoteid="@Model.ScriptureNoteId">Edit</a>
+        </div>
+        <div class="col-md-auto">
+            <a class="btn btn-outline-danger" asp-controller="Home" asp-action="Delete" asp-route-scripturenoteid="@Model.ScriptureNoteId">Delete</a>
+        </div>
+    </div>
+</div>
